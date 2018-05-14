@@ -1,5 +1,7 @@
 package com.poznas.http;
 
+import com.poznas.Constants;
+
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.HttpUrl;
@@ -12,8 +14,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 @Module
 public class ApiModuleForMarkets {
-
-    public final String BASE_URL = "https://api.ig.com/deal/samples/markets/ANDROID_PHONE/";
 
     @Provides
     public OkHttpClient provideClient() {
@@ -41,6 +41,6 @@ public class ApiModuleForMarkets {
 
     @Provides
     public IGGroupApiService provideApiService() {
-        return provideRetrofit(BASE_URL, provideClient()).create(IGGroupApiService.class);
+        return provideRetrofit(Constants.BASE_URL, provideClient()).create(IGGroupApiService.class);
     }
 }
